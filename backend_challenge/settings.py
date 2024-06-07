@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'api',
+    'mozilla_django_oidc',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,3 +123,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+OIDC_RP_CLIENT_ID = 'your-client-id'
+OIDC_RP_CLIENT_SECRET = 'your-client-secret'
+OIDC_OP_AUTHORIZATION_ENDPOINT = 'https://your-oidc-provider/authorize'
+OIDC_OP_TOKEN_ENDPOINT = 'https://your-oidc-provider/token'
+OIDC_OP_USER_ENDPOINT = 'https://your-oidc-provider/userinfo'
+OIDC_OP_JWKS_ENDPOINT = 'https://your-oidc-provider/jwks'
+OIDC_RP_SIGN_ALGO = 'RS256'
+
