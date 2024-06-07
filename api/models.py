@@ -1,17 +1,16 @@
-from django.db import models
+import africastalking
 
-class Customer(models.Model):
-    name = models.CharField(max_length=100)
-    code = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.name
+africastalking.initialize(username='your-username', api_key='your-api-key')
 
 class Order(models.Model):
-    customer = models.ForeignKey(Customer, related_name='orders', on_delete=models.CASCADE)
-    item = models.CharField(max_length=100)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
-    time = models.DateTimeField(auto_now_add=True)
+    ...
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self.send_sms_notification()
+    
+    def send_sms_notification(self):
+        sms = africastalking.SMS
+        message = f"Dear {self.customer.name}, your order for {self.item} has been placed successfully."
+        sms.send(message, [self.customer.phone_number])
 
-    def __str__(self):
-        return f"Order {self.id} by {self.customer.name}"
