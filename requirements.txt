@@ -1,0 +1,7 @@
+Django==3.2.3
+djangorestframework==3.12.4
+africastalking==1.2.7
+mozilla-django-oidc==2.0.0
+djangorestframework-simplejwt==4.6.0
+django-cors-headers==3.7.0
+
